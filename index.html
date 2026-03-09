@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio de Froilan Perez Garcia — Ing. Sistemas Computacionales. Desarrollo web, Python, automatización.">
+  <title>Froilan Perez Garcia — Dev Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <canvas id="canvas-fondo"></canvas>
+
+  <div class="page-wrapper">
+
+    <header>
+      <nav class="nav-inner">
+        <a href="#inicio" class="nav-logo">FPG.</a>
+        <ul class="nav-links">
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#experiencia">Experiencia</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div style="display:flex; align-items:center; gap: 0.75rem;">
+          <button class="btn-tema" id="btn-tema" aria-label="Cambiar tema">
+            <span class="icono-tema" id="icono-tema">☀️</span>
+            <span id="texto-tema">Claro</span>
+          </button>
+          <button class="hamburguesa" id="btn-hamburguesa" aria-label="Abrir menú" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+
+      <section id="inicio">
+        <div class="container">
+          <span class="hero-tag">Disponible para proyectos</span>
+          <h1>Hola, soy <span class="nombre">Froilan Perez</span></h1>
+          <p class="subtitulo">
+            Ing. Sistemas Computacionales
+            <span class="sep">/</span>
+            Full Stack Dev
+          </p>
+          <p>
+            Desarrollo soluciones web robustas combinando frontend moderno,
+            automatización con Python y APIs RESTful. Apasionado por el
+            aprendizaje continuo y la mejora de procesos.
+          </p>
+          <div class="hero-ctas">
+            <a href="#proyectos" class="btn btn-primario">Ver proyectos</a>
+            <a href="#contacto" class="btn btn-secundario">Contáctame</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre-mi">
+        <div class="container">
+          <div class="section-header">
+            <h2>Sobre mí</h2>
+          </div>
+          <div class="sobre-mi-grid">
+            <div class="sobre-mi-foto">
+              <div class="foto-frame">
+                <img src="img/img retrato personal.jpeg" alt="Foto de perfil de Froilan Perez Garcia">
+                <div class="foto-badge">● Disponible</div>
+              </div>
+            </div>
+            <div class="sobre-mi-texto">
+              <h3>Froilan Perez Garcia</h3>
+              <p>
+                Soy Ingeniero en Sistemas Computacionales egresado del Tecnológico de
+                Estudios Superiores de Ecatepec (2020–2025), actualmente en proceso de titulación.
+              </p>
+              <p>
+                Me especializo en desarrollo web frontend, automatización con Python y
+                construcción de APIs REST. Disfruto resolver problemas complejos con
+                soluciones limpias y adaptables, con atención especial a la mejora continua de procesos.
+              </p>
+              <ul class="habilidades-inline">
+                <li>Aprendizaje continuo</li>
+                <li>Trabajo en equipo</li>
+                <li>Atención al detalle</li>
+                <li>Pensamiento crítico</li>
+                <li>Inglés B1</li>
+                <li>Español Nativo</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiencia">
+        <div class="container">
+          <div class="section-header">
+            <h2>Experiencia Profesional</h2>
+          </div>
+          <div class="experiencia-lista">
+
+            <article class="trabajo-card">
+              <div class="trabajo-header">
+                <div class="trabajo-titulo">
+                  <h3>Desarrollador Python (RPA)</h3>
+                  <p class="trabajo-empresa">Jiro y Asociados Agente de Seguros y Fianzas S.A. de C.V.</p>
+                </div>
+                <span class="trabajo-fecha">Mayo 2025 &ndash; Actualidad</span>
+              </div>
+              <ul>
+                <li>Implementación de código robusto en Python con expresiones regulares para extracción y validación de datos sensibles en pólizas de seguro.</li>
+                <li>Desarrollo de scripts para procesamiento documental, garantizando precisión y seguridad en la información.</li>
+                <li>Automatización de procesos de integración de datos hacia sistemas web internos, optimizando flujos de trabajo.</li>
+                <li>Implementación de lógica adaptable para documentos con estructuras variables y casos especiales.</li>
+                <li>Colaboración en depuración y mejora continua de funciones de extracción y validación.</li>
+              </ul>
+              <div class="trabajo-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Regex</span>
+                <span class="tech-tag">RPA</span>
+                <span class="tech-tag">Automatización</span>
+              </div>
+            </article>
+
+            <article class="trabajo-card">
+              <div class="trabajo-header">
+                <div class="trabajo-titulo">
+                  <h3>Desarrollador Front-end / Web</h3>
+                  <p class="trabajo-empresa">Loop, Conexión Empresarial S.A. de C.V.</p>
+                </div>
+                <span class="trabajo-fecha">Oct 2023 &ndash; Abr 2025</span>
+              </div>
+              <ul>
+                <li>Desarrollo de páginas web en WordPress, incluyendo plugins y personalización de themes.</li>
+                <li>Manejo de control de versiones con Git y metodologías ágiles (Scrum).</li>
+                <li>Creación de vistas para aplicaciones web en React.js siguiendo arquitectura MVC.</li>
+                <li>Administración de bases de datos MySQL mediante Docker, con operaciones CRUD y consultas optimizadas.</li>
+                <li>Desarrollo de controllers y APIs REST/RESTful en Spring Boot, con pruebas en Postman.</li>
+              </ul>
+              <div class="trabajo-tech">
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">WordPress</span>
+                <span class="tech-tag">Spring Boot</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">Scrum</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="habilidades">
+        <div class="container">
+          <div class="section-header">
+            <h2>Habilidades</h2>
+          </div>
+          <div class="habilidades-grid">
+
+            <div class="habilidad-categoria">
+              <h3>Lenguajes</h3>
+              <ul class="skills-con-iconos">
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>Py</span>'"></span>
+                  <span>Python</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>Jv</span>'"></span>
+                  <span>Java</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>JS</span>'"></span>
+                  <span>JavaScript</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>TS</span>'"></span>
+                  <span>TypeScript</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>HT</span>'"></span>
+                  <span>HTML5</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>CS</span>'"></span>
+                  <span>CSS3 / SCSS</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>SQL</span>'"></span>
+                  <span>SQL / MySQL</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" alt="SQLite" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>SQ</span>'"></span>
+                  <span>SQLite</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="habilidad-categoria">
+              <h3>Frameworks</h3>
+              <ul class="skills-con-iconos">
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>Re</span>'"></span>
+                  <span>React.js</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" alt="Spring Boot" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>Sp</span>'"></span>
+                  <span>Spring Boot</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" alt="Angular" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>An</span>'"></span>
+                  <span>Angular</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ionic/ionic-original.svg" alt="Ionic" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>Io</span>'"></span>
+                  <span>Ionic</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg" alt="WordPress" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>WP</span>'"></span>
+                  <span>WordPress</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/shopify/shopify-original.svg" alt="Shopify" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>Sh</span>'"></span>
+                  <span>Shopify</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="habilidad-categoria">
+              <h3>Herramientas</h3>
+              <ul class="skills-con-iconos">
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>Git</span>'"></span>
+                  <span>Git</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>Do</span>'"></span>
+                  <span>Docker</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" alt="Postman" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>Pm</span>'"></span>
+                  <span>Postman</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg" alt="Jira" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>Ji</span>'"></span>
+                  <span>Jira / Scrum</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trello/trello-original.svg" alt="Trello" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>Tr</span>'"></span>
+                  <span>Trello</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" onerror="this.parentElement.innerHTML='<span class=\'skill-icon-fallback\'>GH</span>'"></span>
+                  <span>GitHub</span>
+                </li>
+                <li class="skill-item">
+                  <span class="skill-icon" style="font-size: 1.1rem;">📊</span>
+                  <span>Power BI / Excel</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos">
+        <div class="container">
+          <div class="section-header">
+            <h2>Proyectos</h2>
+          </div>
+          <div class="proyectos-grid">
+
+            <article class="proyecto-card">
+              <div class="proyecto-imagen-placeholder">🐍</div>
+              <div class="proyecto-contenido">
+                <h3>Extractor de Pólizas (RPA)</h3>
+                <p>
+                  Automatización en Python para extracción y validación de datos
+                  sensibles en pólizas de seguro, con lógica adaptable para
+                  documentos con estructuras variables.
+                </p>
+                <ul class="proyecto-tags">
+                  <li>Python</li>
+                  <li>Regex</li>
+                  <li>RPA</li>
+                  <li>Automatización</li>
+                </ul>
+                <div class="proyecto-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer">↗ Demo</a>
+                  <a href="https://github.com/Froilan-Perez-Garcia" target="_blank" rel="noopener noreferrer">⌥ Código</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="proyecto-card">
+              <div class="proyecto-imagen-placeholder">⚛️</div>
+              <div class="proyecto-contenido">
+                <h3>App Fullstack React + Spring Boot</h3>
+                <p>
+                  Aplicación web con arquitectura MVC: vistas en React.js,
+                  APIs RESTful en Spring Boot y base de datos MySQL con Docker.
+                </p>
+                <ul class="proyecto-tags">
+                  <li>React.js</li>
+                  <li>Spring Boot</li>
+                  <li>MySQL</li>
+                  <li>Docker</li>
+                </ul>
+                <div class="proyecto-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer">↗ Demo</a>
+                  <a href="https://github.com/Froilan-Perez-Garcia" target="_blank" rel="noopener noreferrer">⌥ Código</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto">
+        <div class="container">
+          <div class="section-header">
+            <h2>Contacto</h2>
+          </div>
+          <div class="contacto-grid">
+            <div class="contacto-info">
+              <h3>¿Tienes un proyecto?</h3>
+              <p>
+                Estoy disponible para proyectos freelance, colaboraciones
+                o posiciones de tiempo completo. Escríbeme.
+              </p>
+              <div class="contacto-datos">
+                <div class="contacto-dato">
+                  <div class="contacto-dato-icono">✉️</div>
+                  <a href="mailto:perezgarciafroilan666@gmail.com">perezgarciafroilan666@gmail.com</a>
+                </div>
+                <div class="contacto-dato">
+                  <div class="contacto-dato-icono">📱</div>
+                  <a href="tel:+525635498485">+52 (56) 35-49-84-85</a>
+                </div>
+                <div class="contacto-dato">
+                  <div class="contacto-dato-icono">💻</div>
+                  <a href="https://github.com/Froilan-Perez-Garcia" target="_blank" rel="noopener noreferrer">GitHub | Froilan-Perez-Garcia</a>
+                </div>
+                <div class="contacto-dato">
+                  <div class="contacto-dato-icono">🔗</div>
+                  <a href="https://linkedin.com/in/froilan-perez-garcia" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+            <form action="#" method="POST">
+              <div class="form-grupo">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+              </div>
+              <div class="form-grupo">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+              </div>
+              <div class="form-grupo">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primario">Enviar mensaje</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <p>Diseñado y desarrollado por <strong>Froilan Perez Garcia</strong></p>
+          <p>&copy; 2025 — Todos los derechos reservados.</p>
+        </div>
+        <nav>
+          <a href="https://github.com/Froilan-Perez-Garcia" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/froilan-perez-garcia" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="mailto:perezgarciafroilan666@gmail.com">Email</a>
+        </nav>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
