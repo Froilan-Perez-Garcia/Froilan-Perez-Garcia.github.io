@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://froilan-perez-garcia.github.io/sitemap.xml

@@ -1,3 +1,7 @@
+// Endpoint de Web3Forms (https://api.web3forms.com/submit, requiere un input oculto access_key)
+// o Formspree (https://formspree.io/f/XXXX). Mientras sea el placeholder, el formulario avisa que no está configurado.
+const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+
 document.addEventListener('DOMContentLoaded', () => {
   initTema();
   initCanvasFondo();
@@ -6,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnimacionesScroll();
   initMenuMovil();
   initFormulario();
+  initCarrusel();
 });
 
 function initTema() {
@@ -16,7 +21,7 @@ function initTema() {
 
   if (!btnTema || !iconoTema || !textoTema) return;
 
-  let temaEnMemoria = 'oscuro';
+  let temaEnMemoria = window.matchMedia('(prefers-color-scheme: light)').matches ? 'claro' : 'oscuro';
 
   function guardarTema(valor) {
     temaEnMemoria = valor;
@@ -78,13 +83,13 @@ function initCanvasFondo() {
       y:     Math.random() * canvas.height,
       vx:    (Math.random() - 0.5) * 0.4,
       vy:    (Math.random() - 0.5) * 0.4,
-      radio: Math.random() * 2 + 1,
-      alpha: Math.random() * 0.4 + 0.1,
+      radio: Math.random() * 3 + 2,
+      alpha: Math.random() * 0.4 + 0.5,
     };
   }
 
   function inicializarParticulas() {
-    const cantidad = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 80);
+    const cantidad = Math.min(Math.floor((canvas.width * canvas.height) / 6000), 220);
     particulas = Array.from({ length: cantidad }, crearParticula);
   }
 
@@ -102,7 +107,10 @@ function initCanvasFondo() {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radio, 0, Math.PI * 2);
       ctx.fillStyle = `${colores.particula}${p.alpha})`;
+      ctx.shadowBlur  = 18;
+      ctx.shadowColor = `${colores.particula}1)`;
       ctx.fill();
+      ctx.shadowBlur  = 0;
 
       for (let j = i + 1; j < particulas.length; j++) {
         const otra = particulas[j];
@@ -124,6 +132,9 @@ function initCanvasFondo() {
     animFrameId = requestAnimationFrame(dibujar);
   }
 
+  const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (sinMovimiento.matches) { canvas.remove(); return; }
+
   ajustarTamano();
   inicializarParticulas();
   dibujar();
@@ -132,10 +143,14 @@ function initCanvasFondo() {
     cancelAnimationFrame(animFrameId);
     ajustarTamano();
     inicializarParticulas();
-    dibujar();
+    if (!document.hidden) dibujar();
   });
 
-  window.addEventListener('temaChanged', () => {});
+  document.addEventListener('visibilitychange', () => {
+    cancelAnimationFrame(animFrameId);
+    if (!document.hidden) dibujar();
+  });
+
 }
 
 function initNavegacion() {
@@ -157,7 +172,9 @@ function initScrollActivo() {
       if (window.scrollY >= top && window.scrollY < bottom) actual = sec.id;
     });
     navLinks.forEach(link => {
-      link.classList.toggle('activo', link.getAttribute('href') === `#${actual}`);
+        const activo = link.getAttribute('href') === `#${actual}`;
+      link.classList.toggle('activo', activo);
+      if (activo) link.setAttribute('aria-current', 'true'); else link.removeAttribute('aria-current');
     });
   }, { passive: true });
 }
@@ -171,6 +188,8 @@ function initAnimacionesScroll() {
       }
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   document.querySelectorAll(
     '.trabajo-card, .proyecto-card, .habilidad-categoria, .sobre-mi-grid, .contacto-grid, .section-header'
@@ -199,6 +218,13 @@ function initMenuMovil() {
 
   document.addEventListener('click', e => {
     if (!header.contains(e.target)) cerrarMenu();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navLinks.classList.contains('nav-abierto')) {
+      cerrarMenu();
+      btnHamburguesa.focus();
+    }
   });
 
   function cerrarMenu() {
@@ -233,7 +259,21 @@ function initFormulario() {
     btn.disabled = true;
 
     try {
-      await esperar(1500);
+      if (FORM_ENDPOINT === 'REEMPLAZA_CON_TU_ENDPOINT') {
+        mostrarMensaje(form, '⚠️ El formulario aún no está configurado.', 'error');
+        return;
+      }
+      // Honeypot: un bot lo llena; fingimos éxito sin enviar nada.
+      if (form.querySelector('[name="botcheck"]').value) {
+        form.reset();
+        return;
+      }
+      const resp = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))), // incluye access_key si lo añades como input oculto
+      });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       mostrarMensaje(form, '✅ ¡Mensaje enviado! Te contactaré pronto.', 'exito');
       form.reset();
     } catch (err) {
@@ -254,6 +294,12 @@ function mostrarMensaje(contenedor, texto, tipo) {
   setTimeout(() => div.remove(), 5000);
 }
 
-function esperar(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function initCarrusel() {
+  const carrusel = document.querySelector('.tech-carrusel');
+  if (!carrusel) return;
+  // playbackRate evita el salto que causaría cambiar animation-duration en caliente
+  const velocidad = v => carrusel.querySelectorAll('.tech-pista').forEach(p =>
+    p.getAnimations().forEach(a => { a.playbackRate = v; }));
+  carrusel.addEventListener('mouseenter', () => velocidad(0.1));
+  carrusel.addEventListener('mouseleave', () => velocidad(1));
 }

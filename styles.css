@@ -87,7 +87,7 @@ body {
 }
 
 .page-wrapper {
-  background-color: var(--fondo);
+  background-color: color-mix(in srgb, var(--fondo) 70%, transparent);
   max-width: var(--ancho-contenido);
   margin: 0 auto;
   position: relative;
@@ -117,7 +117,7 @@ section {
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -173,13 +173,13 @@ header.scrolled {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--sp-sm) var(--sp-lg);
+  padding: 1.4rem var(--sp-lg);
   max-width: 100%;
 }
 
 .nav-logo {
   font-family: var(--fuente-titulo);
-  font-size: 1.6rem;
+  font-size: 2.1rem;
   font-weight: normal;
   color: var(--texto);
   letter-spacing: 0.04em;
@@ -193,13 +193,13 @@ header.scrolled {
 
 .nav-links {
   display: flex;
-  gap: var(--sp-md);
+  gap: var(--sp-lg);
   list-style: none;
   align-items: center;
 }
 
 .nav-links a {
-  font-size: 0.875rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: var(--texto-suave);
   letter-spacing: 0.02em;
@@ -233,12 +233,12 @@ header.scrolled {
   background: var(--fondo-card);
   border: 1px solid var(--borde);
   border-radius: 100px;
-  padding: 0.35rem 0.75rem;
+  padding: 0.55rem 1.1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-family: var(--fuente-cuerpo);
   color: var(--texto-suave);
   transition: all var(--transicion);
@@ -249,7 +249,7 @@ header.scrolled {
   box-shadow: 0 0 12px var(--acento-glow);
 }
 .btn-tema .icono-tema {
-  font-size: 1rem;
+  font-size: 1.3rem;
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .btn-tema:hover .icono-tema {
@@ -281,7 +281,8 @@ header.scrolled {
 .hamburguesa.activo span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 #inicio {
-  min-height: 60vh;
+  min-height: auto;
+  padding-bottom: var(--sp-md);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -465,6 +466,7 @@ header.scrolled {
 
 .foto-frame img {
   width: 100%;
+  height: auto; /* anula el atributo height del HTML para que aplique aspect-ratio */
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: var(--radio-lg);
@@ -640,7 +642,7 @@ header.scrolled {
 .trabajo-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.6rem;
   padding-top: var(--sp-sm);
   border-top: 1px solid var(--borde);
   margin-top: var(--sp-sm);
@@ -648,17 +650,21 @@ header.scrolled {
 
 .tech-tag {
   font-family: var(--fuente-mono);
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   color: var(--texto-muted);
   background: var(--fondo);
   border: 1px solid var(--borde);
-  padding: 0.15rem 0.55rem;
-  border-radius: 4px;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  cursor: default;
   transition: all var(--transicion);
 }
 .tech-tag:hover {
   color: var(--acento-suave);
-  border-color: var(--acento-glow);
+  background: var(--acento-bg);
+  border-color: var(--acento);
+  box-shadow: 0 0 12px var(--acento-glow);
+  transform: scale(1.1);
 }
 
 .habilidades-grid {
@@ -681,7 +687,7 @@ header.scrolled {
 }
 
 .habilidad-categoria h3 {
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--acento);
@@ -699,8 +705,8 @@ header.scrolled {
 .skill-item {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 0.5rem;
+  gap: 0.9rem;
+  padding: 0.55rem 0.6rem;
   border-radius: var(--radio);
   transition: all var(--transicion);
   cursor: default;
@@ -711,8 +717,8 @@ header.scrolled {
 }
 
 .skill-icon {
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -730,21 +736,21 @@ header.scrolled {
 }
 
 .skill-icon-fallback {
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   background: var(--acento-bg);
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.6rem;
+  font-size: 0.85rem;
   color: var(--acento);
   font-family: var(--fuente-mono);
   font-weight: 700;
 }
 
 .skill-item span {
-  font-size: 0.875rem;
+  font-size: 1.15rem;
   color: var(--texto-suave);
   transition: color var(--transicion);
 }
@@ -1055,4 +1061,76 @@ footer nav a:hover { color: var(--acento); }
   :root {
     --ancho-contenido: 1050px;
   }
+}
+
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.saltar-contenido {
+  position: absolute;
+  left: var(--sp-sm);
+  top: -4rem;
+  z-index: 200;
+  padding: 0.5rem 1rem;
+  background: var(--acento);
+  color: #fff;
+  border-radius: var(--radio);
+}
+.saltar-contenido:focus { top: var(--sp-sm); color: #fff; }
+
+:focus-visible {
+  outline: 2px solid var(--acento-suave);
+  outline-offset: 3px;
+}
+main:focus { outline: none; }
+
+section[id] { scroll-margin-top: 4.5rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.tech-carrusel {
+  display: flex;
+  overflow: hidden;
+  margin: var(--sp-lg) var(--sp-lg) 0;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.tech-pista {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--sp-md);
+  padding-right: var(--sp-md);
+  list-style: none;
+  animation: tech-deslizar 55s linear infinite;
+}
+.tech-pista li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--fondo-card);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  font-family: var(--fuente-mono);
+  font-size: 1rem;
+  color: var(--texto-suave);
+  white-space: nowrap;
+}
+.tech-pista img { width: 56px; height: 56px; }
+@keyframes tech-deslizar { to { transform: translateX(-100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-carrusel { overflow-x: auto; }
+  .tech-pista[aria-hidden="true"] { display: none; }
 }
