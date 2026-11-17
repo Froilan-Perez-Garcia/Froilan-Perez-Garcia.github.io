@@ -1134,3 +1134,12 @@ section[id] { scroll-margin-top: 4.5rem; }
   .tech-carrusel { overflow-x: auto; }
   .tech-pista[aria-hidden="true"] { display: none; }
 }
+
+.proyecto-imagen {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  height: auto;
+  object-fit: cover;
+  object-position: top;
+}
